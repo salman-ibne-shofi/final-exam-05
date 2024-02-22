@@ -1,0 +1,39 @@
+body {
+	font-family: "Raleway", sans-serif;
+}
+/* Navbar section */
+.navbar{
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+/* Banner section */
+.banner {
+	position: relative;
+}
+
+.banner-content {
+	position: relative;
+}
+
+.text-overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.text-overlay h1,
+.text-overlay p {
+    margin-top: 20px;
+}
+.text-overlay .btn {
+	background-color: #1dd100;
+	border-color: #030712;
+	font-weight: 900;
+}
+
+.banner img{
+    height: 550px;
+    margin: 0 auto;
+}
