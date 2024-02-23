@@ -32,8 +32,9 @@ body {
 	border-color: #030712;
 	font-weight: 900;
 }
-
-.banner img{
-    height: 550px;
-    margin: 0 auto;
+/* Offers section */
+.cupon-section{
+    display: flex;
+    justify-content: center;
+    column-gap: 32px;
 }
