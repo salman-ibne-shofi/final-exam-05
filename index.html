@@ -20,7 +20,7 @@
 		/>
 	</head>
 	<body class="bg-[#F7F8F8] rounded-t-3xl">
-		<div class="hidden">
+		<div id="ticket-collection-section" class="">
 			<header>
 				<!-- Navbar section -->
 				<div class="lg:mx-16 mx-6 mt-3">
@@ -206,7 +206,7 @@
 										<img
 											src="./B9A5-smart-ticketing-main/images/seat-green.png"
 											alt=""
-										/><span id="seat-left">40</span> Seats
+										/><span id="seat-left"></span> Seats
 										left
 									</button>
 								</div>
@@ -530,7 +530,7 @@
 								>
 									<p>
 										Seat<span
-											id="current-amount"
+											id="seat-selected"
 											class="bg-[#1DD100] text-[#FFFFFF] px-2 rounded-md mx-1"
 											>0</span
 										>
@@ -538,25 +538,19 @@
 									<p>Class</p>
 									<p>Price</p>
 								</div>
-								<div
+								<!-- <div
 									class="flex justify-between py-2 text-[#03071280]"
 								>
 									<p>C2</p>
 									<p>Economoy</p>
 									<p>550</p>
-								</div>
-								<div
-									class="flex justify-between border-b-2 py-2 text-[#03071280]"
-								>
-									<p>C2</p>
-									<p>Economoy</p>
-									<p>550</p>
-								</div>
+								</div> -->
+								<div id="seat-list"></div>
 								<div
 									class="flex justify-between text-[#030712] font-medium my-2"
 								>
 									<p>Total Price</p>
-									<p>BDT<span>0</span></p>
+									<p>BDT <span id="cost">0</span></p>
 								</div>
 								<div
 									class="wrapper flex justify-between p-2 bg-white rounded-md"
@@ -578,7 +572,7 @@
 									class="flex justify-between font-medium mt-4 text-[#030712]"
 								>
 									<p>Grand Total</p>
-									<p>BDT 1100</p>
+									<p>BDT <span id="cost2">0</span></p>
 								</div>
 							</div>
 							<div class="mt-6 flex flex-col gap-4">
@@ -586,6 +580,7 @@
 									Passenger Name*
 								</h3>
 								<input
+									id="input1"
 									type="text"
 									placeholder="Enter your name"
 									class="w-full border-2 rounded-md p-2"
@@ -594,6 +589,7 @@
 									Phone Number*
 								</h3>
 								<input
+									id="input2"
 									type="text"
 									placeholder="Enter your phone number"
 									class="w-full border-2 rounded-md p-2"
@@ -602,14 +598,16 @@
 									Email ID
 								</h3>
 								<input
+									id="input3"
 									type="text"
 									placeholder="Enter your email id"
 									class="w-full border-2 rounded-md p-2"
 								/>
 								<button
-									disabled
-									id="nextbtn"
+									id="submit-button"
+									onclick="play()"
 									class="btn bg-[#1DD100] text-[#FFFFFF]"
+									disabled="true"
 								>
 									Next
 								</button>
@@ -674,7 +672,10 @@
 			</main>
 		</div>
 		<!-- thank you for booking our bus seats -->
-		<div class="flex py-20 px-40 min-h-screen items-center">
+		<div
+			id="thank-you"
+			class="flex py-20 px-40 min-h-screen items-center hidden"
+		>
 			<div
 				class="flex flex-col border rounded-xl bg-white space-y-6 text-center items-center p-8"
 			>

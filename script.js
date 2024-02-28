@@ -1,28 +1,70 @@
-// // apply button and next button disabled
-// const applyButton = document.getElementById('apply');
-// const nextbtnButton = document.getElementById('nextbtn');
+const seatDiv = document.getElementById("bus-interior");
+const seatList = document.getElementById("seat-list");
+const seatLeft = document.getElementById("seat-left");
+const seatSelected = document.getElementById("seat-selected");
+const cost = document.getElementById("cost");
+const cost2 = document.getElementById("cost2");
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+const input3 = document.getElementById("input3");
+const submitButton = document.getElementById("submit-button");
+const seatArray = [];
+seatLeft.innerHTML = 40;
 
-// // 1.get the current amount
-// const currentAmountElement = document.getElementById('current-amount');
-// const currentScoreText = currentAmountElement.innerText;
-// const currentScore = parseInt(currentScoreText);
-// console.log(currentScore);
+// next button
+function play() {
+	//step-1: hide the ticket collection section
+	const ticketSection = document.getElementById("ticket-collection-section");
+	ticketSection.classList.add("hidden");
+	//step-2: show the thank you section
+	const thankYouSection = document.getElementById("thank-you");
+	thankYouSection.classList.remove("hidden");
+	// console.log(thankYouSection.classList)
+}
 
-// // 2.increase the amount by 550
-// const newAmount = currentScore + 550;
+function seatClicked(event) {
+	if (event.target.tagName == "BUTTON") {
+		const btnText = event.target.innerText;
 
-// // 3.show the update score
-// currentAmountElement.innerText = newScore;
+		if (seatArray.length < 4 && !seatArray.includes(btnText)) {
+			event.target.classList.add("bg-[#1DD100]", "text-white");
+			seatArray.push(btnText);
+			seatSelected.innerHTML = seatArray.length;
+			const calculatedCost = seatArray.length * 550;
+			cost.innerHTML = calculatedCost;
+			cost2.innerHTML = calculatedCost;
+			seatLeft.innerHTML -= 1;
+		}
 
-// seats left
-const totalSeats = document.getElementById("seat-left");
-const totalSeatsAmount = totalSeats.innerHTML;
-console.log(totalSeatsAmount);
+		var ourHTML = "";
+		for (var i = 0; i < seatArray.length; i++) {
+			const seatNumber = seatArray[i];
 
-// selected seats
-const selectedSeat = document.getElementById("current-amount");
-const selectedSeatAmount = selectedSeat.innerHTML;
-console.log(selectedSeatAmount);
+			ourHTML +=
+				"<div class='flex justify-between py-2 text-[#03071280]'><p>" +
+				seatNumber +
+				"</p><p>Economoy</p><p>550</p></div>";
+		}
+		seatList.innerHTML = ourHTML;
 
-// bus seats interior
-const clickedSeats = document.getElementById("bus-interior");
+		console.log(seatArray);
+	}
+}
+
+seatDiv.addEventListener("click", seatClicked);
+
+function inputCheck() {
+	if (
+		input2.value.trim() !== "" &&
+		input1.value.trim() !== "" &&
+		input3.value.trim() !== ""
+	) {
+		submitButton.disabled = false;
+	} else {
+		submitButton.disabled = true;
+	}
+}
+
+input1.addEventListener("input", inputCheck);
+input2.addEventListener("input", inputCheck);
+input3.addEventListener("input", inputCheck);
